@@ -10,7 +10,7 @@ name: Junction CI-CD with Gradle
 on:
   push:
     tags:
-      - junction-*
+      - pink-hacker-*
 
 permissions:
   id-token: write
@@ -44,7 +44,7 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_HUB_ID }}/junction
           tags: |
-            type=match,pattern=junction-(.*),group=1
+            type=match,pattern=pink-hacker-(.*),group=1
       - ## DockerHub 로그인
         name: Login to DockerHub
         uses: docker/login-action@v2
