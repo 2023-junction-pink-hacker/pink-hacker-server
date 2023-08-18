@@ -1,0 +1,19 @@
+services:
+
+  api:
+    image: "nginx:latest"
+
+    container_name: "junction-nginx"
+
+    ports:
+      - '80:80'
+
+    volumes:
+      - ~/nginx.conf:/etc/nginx/nginx.conf
+
+    restart: "unless-stopped"
+
+networks:
+  default:
+    name: junction-network
+    external: true

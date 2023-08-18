@@ -1,0 +1,11 @@
+services:
+
+  green:
+    image: "neity16/junction"
+
+    container_name: "junction-server-green"
+
+networks:
+  default:
+    name: junction-network
+    external: true
