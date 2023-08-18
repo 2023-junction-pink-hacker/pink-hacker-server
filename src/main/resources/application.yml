@@ -3,4 +3,4 @@ spring:
 #    activate:
 #      on-profile: dev
     import:
-      - optional:file:config/application-security.yml # local
+      - optional:classpath:application-security.yml # build
