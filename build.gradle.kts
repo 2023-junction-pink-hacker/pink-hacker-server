@@ -31,7 +31,6 @@ val snippetsDir by extra { file("build/generated-snippets") }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-//    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("com.mysql:mysql-connector-j:8.0.33")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
