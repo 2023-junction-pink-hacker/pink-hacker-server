@@ -24,23 +24,25 @@ class RecipeService(
     private val recipeMapper: RecipeMapper
 ) {
     fun searchRecipeByFeed(sort: String): List<SearchRecipeFeedResponse> {
-        return recipeRepository.findAllByOrderByCreatedDateDesc()
-            .map { recipeMapper.toSearchRecipeResponse(it) }
+        return if (sort == "popular") {
+            recipeRepository.findAllByOrderByOrderCountDesc()
+                .map { recipeMapper.toSearchRecipeResponse(it) }
+        } else {
+            recipeRepository.findAllByOrderByCreatedDateDesc()
+                .map { recipeMapper.toSearchRecipeResponse(it) }
+        }
     }
-
-//    fun searchRecipe
 
     fun upsertRecipe(saveRecipeRequest: SaveRecipeRequest) {
         with(saveRecipeRequest) {
             // Recipe 저장 및 수정
             val recipe = if (recipeId == null) {
-                // Recipe 저장
-                val product =
-                    productRepository.findById(this.productId).orElseThrow { RuntimeException("productId 가 유효하지 않습니다") }
+                // Recipe 주문
+                // TODO: 같은 주문 체크해서 기존 레시피 order count 증가
                 Recipe(
                     description,
                     category,
-                    product
+                    productId
                 )
             } else {
                 // Recipe 수정

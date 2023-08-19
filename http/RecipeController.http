@@ -10,7 +10,7 @@ Content-Type: application/json
   "recipeId": null,
   "productId": 1,
   "category": "PIZZA",
-  "description": "춘식이가 만든 귀여운 피자에요",
+  "description": "라이언의 하와이안 피자",
   "steps": [
     {
       "id": 1,
@@ -23,8 +23,8 @@ Content-Type: application/json
           "title": "dough",
           "values": [
             {
-              "id": 3,
-              "value": "Whole Grain"
+              "id": 4,
+              "value": "Whole Wheat"
             }
           ]
         },
@@ -255,5 +255,8 @@ Content-Type: application/json
 }
 
 
-### 피드 레시피(recipe) 조회
-GET {{host}}/api/recipes/feed?sort=?abcd
+### 피드 레시피(recipe) 조회 - 주문많은순
+GET {{host}}/api/recipes/feed?sort=popular
+
+### 피드 레시피(recipe) 조회 - 최신순
+GET {{host}}/api/recipes/feed?sort=createdDate
