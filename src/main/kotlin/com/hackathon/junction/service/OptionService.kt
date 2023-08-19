@@ -2,6 +2,7 @@ package com.hackathon.junction.service
 
 import com.hackathon.junction.dto.OptionDto
 import com.hackathon.junction.entity.OptionValue
+import com.hackathon.junction.entity.OptionValueStatus
 import com.hackathon.junction.mapper.OptionMapper
 import com.hackathon.junction.repository.OptionRepository
 import com.hackathon.junction.repository.OptionValueRepository
@@ -20,8 +21,9 @@ class OptionService(
     fun getOptionWithValues(optionIds: List<Long>): List<OptionDto> {
         return optionRepository.findAllByIdIn(optionIds)
             .map { option ->
-                val optionValueDtoList = optionValueRepository.findByOptionId(option.id!!)
-                    .map { optionMapper.toOptionValueDto(it) }
+                val optionValueDtoList =
+                    optionValueRepository.findByOptionIdAndStatus(option.id!!, OptionValueStatus.DEFAULT)
+                        .map { optionMapper.toOptionValueDto(it) }
                 optionMapper.toOptionDto(option, optionValueDtoList)
             }
     }

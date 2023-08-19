@@ -1,7 +1,7 @@
 package com.hackathon.junction.controller
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
-import com.hackathon.junction.dto.response.SearchRecipeResponse
+import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.dto.response.SearchStepsResponse
 import com.hackathon.junction.service.RecipeService
 import com.hackathon.junction.service.StepService
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -31,8 +32,18 @@ class RecipeController(
         return "OK"
     }
 
-    @GetMapping("/recipes/{recipeId}")
-    fun searchRecipe(@PathVariable recipeId: Long): SearchRecipeResponse {
-        return recipeService.searchRecipe(recipeId)
+    @GetMapping("/recipes/feed")
+    fun searchRecipeByFeed(
+        @RequestParam sort: String = "popular"
+    ): List<SearchRecipeFeedResponse> {
+        // TODO: 주문수 필드 추가
+        return recipeService.searchRecipeByFeed(sort)
     }
+
+//    @GetMapping("/recipes/{recipeId}")
+//    fun searchRecipe(
+//        @PathVariable recipeId: Long
+//    ) {
+//        return recipeService.searchRecipe(recipeId)
+//    }
 }

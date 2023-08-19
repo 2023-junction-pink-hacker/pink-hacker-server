@@ -1,7 +1,7 @@
 package com.hackathon.junction.service
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
-import com.hackathon.junction.dto.response.SearchRecipeResponse
+import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.entity.Recipe
 import com.hackathon.junction.entity.RecipeStatus
 import com.hackathon.junction.entity.RecipeStep
@@ -23,10 +23,12 @@ class RecipeService(
     private val optionMapper: OptionMapper,
     private val recipeMapper: RecipeMapper
 ) {
-    fun searchRecipe(recipeId: Long): SearchRecipeResponse {
-        return recipeRepository.findById(recipeId).orElseThrow { RuntimeException("recipeId 가 유효하지 않습니다") }
-            .run { recipeMapper.toSearchRecipeResponse(this) }
+    fun searchRecipeByFeed(sort: String): List<SearchRecipeFeedResponse> {
+        return recipeRepository.findAllByOrderByCreatedDateDesc()
+            .map { recipeMapper.toSearchRecipeResponse(it) }
     }
+
+//    fun searchRecipe
 
     fun upsertRecipe(saveRecipeRequest: SaveRecipeRequest) {
         with(saveRecipeRequest) {

@@ -2,6 +2,8 @@ package com.hackathon.junction.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -19,4 +21,7 @@ class OptionValue(
 
     @ManyToOne @JoinColumn(name = "option_id")
     val option: Option,
+
+    @Enumerated(EnumType.STRING)
+    val status: OptionValueStatus
 )

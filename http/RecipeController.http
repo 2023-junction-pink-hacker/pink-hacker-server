@@ -255,5 +255,5 @@ Content-Type: application/json
 }
 
 
-### 레시피(recipe) 조회
-GET {{host}}/api/recipes/2
+### 피드 레시피(recipe) 조회
+GET {{host}}/api/recipes/feed?sort=?abcd
