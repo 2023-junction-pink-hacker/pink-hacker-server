@@ -1,6 +1,7 @@
 package com.hackathon.junction.controller
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
+import com.hackathon.junction.dto.response.SearchRecipeResponse
 import com.hackathon.junction.dto.response.SearchStepsResponse
 import com.hackathon.junction.service.RecipeService
 import com.hackathon.junction.service.StepService
@@ -30,8 +31,8 @@ class RecipeController(
         return "OK"
     }
 
-//    @GetMapping("/recipes/{recipeId}")
-//    fun searchRecipe(@PathVariable recipeId: Long) {
-//        recipeService.searchRecipe(recipeId)
-//    }
+    @GetMapping("/recipes/{recipeId}")
+    fun searchRecipe(@PathVariable recipeId: Long): SearchRecipeResponse {
+        return recipeService.searchRecipe(recipeId)
+    }
 }

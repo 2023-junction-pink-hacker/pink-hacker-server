@@ -253,3 +253,7 @@ Content-Type: application/json
     }
   ]
 }
+
+
+### 레시피(recipe) 조회
+GET {{host}}/api/recipes/2
