@@ -1,5 +1,5 @@
 package com.hackathon.junction.entity
 
 enum class OptionType {
-    FIELD, NUMBER,
+    PLAIN, SELECT, AMOUNT, AMOUNT_THIRD
 }

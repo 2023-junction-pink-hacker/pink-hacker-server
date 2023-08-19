@@ -6,6 +6,7 @@ plugins {
     id("org.asciidoctor.jvm.convert") version "3.3.2"
     kotlin("jvm") version "1.8.22"
     kotlin("plugin.spring") version "1.8.22"
+    kotlin("kapt") version "1.6.21"
     kotlin("plugin.jpa") version "1.8.22"
 }
 
@@ -36,11 +37,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.mapstruct:mapstruct:1.4.2.Final")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+
+    kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
 }
 
 tasks.withType<KotlinCompile> {
