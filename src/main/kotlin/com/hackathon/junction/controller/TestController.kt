@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class TestController {
     @GetMapping("/test")
-    fun test(@Value("\${aws.location}") location: String): String {
-        return location
+    fun test(@Value("\${aws.location}") location: String): Map<String, String> {
+        return mapOf("name" to "hue", "age" to "28")
     }
 }
