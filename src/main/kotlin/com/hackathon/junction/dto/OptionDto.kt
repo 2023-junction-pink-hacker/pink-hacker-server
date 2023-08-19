@@ -6,5 +6,5 @@ data class OptionDto(
     val id: Long,
     val type: OptionType,
     val title: String,
-    val values: List<OptionValueDto>
+    val values: List<OptionValueDto>,
 )

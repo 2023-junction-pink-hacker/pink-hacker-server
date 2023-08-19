@@ -1,0 +1,255 @@
+### 상품(product) 에 해당하는 레시피 생성 단계 조회 API
+GET {{host}}/api/steps/products/1
+
+
+### 레시피(recipe) 생성 및 수정
+POST {{host}}/api/recipes
+Content-Type: application/json
+
+{
+  "recipeId": null,
+  "productId": 1,
+  "category": "PIZZA",
+  "description": "춘식이가 만든 귀여운 피자에요",
+  "steps": [
+    {
+      "id": 1,
+      "name": "select dough and thickness",
+      "position": 1,
+      "options": [
+        {
+          "id": 1,
+          "type": "SELECT",
+          "title": "dough",
+          "values": [
+            {
+              "id": 3,
+              "value": "Whole Grain"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "SELECT",
+          "title": "thickness",
+          "values": [
+            {
+              "id": 7,
+              "value": "regular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "select source and amount",
+      "position": 2,
+      "options": [
+        {
+          "id": 3,
+          "type": "SELECT",
+          "title": "amount",
+          "values": [
+            {
+              "id": 9,
+              "value": "less"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "type": "SELECT",
+          "title": "source",
+          "values": [
+            {
+              "id": 14,
+              "value": "BBQ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "select cheese",
+      "position": 3,
+      "options": [
+        {
+          "id": 5,
+          "type": "SELECT",
+          "title": "cheeze",
+          "values": [
+            {
+              "id": 19,
+              "value": "Parmesan Cheese"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "type": "AMOUNT",
+          "title": "",
+          "values": [
+            {
+              "id": 42,
+              "value": "8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "select toppings",
+      "position": 4,
+      "options": [
+        {
+          "id": 6,
+          "type": "PLAIN",
+          "title": "toppings",
+          "values": []
+        },
+        {
+          "id": 7,
+          "type": "AMOUNT",
+          "title": "mushroom",
+          "values": [
+            {
+              "id": 23,
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "AMOUNT",
+          "title": "pepperoni",
+          "values": [
+            {
+              "id": 24,
+              "value": "7"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "type": "AMOUNT",
+          "title": "Sausage",
+          "values": [
+            {
+              "id": 25,
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "type": "AMOUNT",
+          "title": "tomato",
+          "values": [
+            {
+              "id": 26,
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "type": "AMOUNT_THIRD",
+          "title": "onion",
+          "values": [
+            {
+              "id": 27,
+              "value": "less"
+            },
+            {
+              "id": 28,
+              "value": "regular"
+            },
+            {
+              "id": 29,
+              "value": "extra"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "type": "AMOUNT_THIRD",
+          "title": "black olives",
+          "values": [
+            {
+              "id": 30,
+              "value": "less"
+            },
+            {
+              "id": 31,
+              "value": "regular"
+            },
+            {
+              "id": 32,
+              "value": "extra"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "type": "AMOUNT_THIRD",
+          "title": "green pepper",
+          "values": [
+            {
+              "id": 33,
+              "value": "less"
+            },
+            {
+              "id": 34,
+              "value": "regular"
+            },
+            {
+              "id": 35,
+              "value": "extra"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "type": "AMOUNT_THIRD",
+          "title": "garlic",
+          "values": [
+            {
+              "id": 36,
+              "value": "less"
+            },
+            {
+              "id": 37,
+              "value": "regular"
+            },
+            {
+              "id": 38,
+              "value": "extra"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "type": "AMOUNT_THIRD",
+          "title": "fresh basil",
+          "values": [
+            {
+              "id": 39,
+              "value": "less"
+            },
+            {
+              "id": 40,
+              "value": "regular"
+            },
+            {
+              "id": 41,
+              "value": "extra"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

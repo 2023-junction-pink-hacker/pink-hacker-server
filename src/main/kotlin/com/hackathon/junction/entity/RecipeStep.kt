@@ -5,21 +5,19 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
 
 @Entity
 data class RecipeStep(
+    @Column(name = "recipe_id")
+    val recipeId: Long,
+
+    @Column(name = "step_id")
+    val stepId: Long,
+
+    @Column(name = "option_value_id")
+    val optionValueId: Long,
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recipe_step_id")
     val id: Long? = null,
-
-    @ManyToOne @JoinColumn(name = "recipe_id")
-    val recipe: Recipe,
-
-    @ManyToOne @JoinColumn(name = "step_id")
-    val step: Step,
-
-    @Column(name = "option_value_id")
-    val optionValueId: Long
 )

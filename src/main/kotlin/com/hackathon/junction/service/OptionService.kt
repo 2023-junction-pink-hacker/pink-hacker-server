@@ -1,6 +1,7 @@
 package com.hackathon.junction.service
 
 import com.hackathon.junction.dto.OptionDto
+import com.hackathon.junction.entity.OptionValue
 import com.hackathon.junction.mapper.OptionMapper
 import com.hackathon.junction.repository.OptionRepository
 import com.hackathon.junction.repository.OptionValueRepository
@@ -28,5 +29,9 @@ class OptionService(
     fun getOptionsByStepId(stepId: Long): List<OptionDto> {
         val optionsIds = stepOptionRepository.findAllByStepId(stepId).map { it.option.id as Long }
         return getOptionWithValues(optionsIds)
+    }
+
+    fun saveOptionValues(optionValues: List<OptionValue>): List<OptionValue> {
+        return optionValueRepository.saveAll(optionValues)
     }
 }
