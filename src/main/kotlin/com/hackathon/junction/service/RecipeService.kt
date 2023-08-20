@@ -4,6 +4,7 @@ import com.hackathon.junction.dto.request.SaveRecipeRequest
 import com.hackathon.junction.dto.request.UpdateRecipeRequest
 import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.entity.Recipe
+import com.hackathon.junction.entity.RecipeStatus
 import com.hackathon.junction.entity.RecipeStep
 import com.hackathon.junction.mapper.OptionMapper
 import com.hackathon.junction.mapper.RecipeMapper
@@ -31,6 +32,7 @@ class RecipeService(
             recipeRepository.findAllByOrderByCreatedDateDesc()
                 .map { recipeMapper.toSearchRecipeResponse(it) }
         }
+            .filter { it.status == RecipeStatus.PUBLIC }
     }
 
     fun updateRecipe(updateRecipeRequest: UpdateRecipeRequest) {

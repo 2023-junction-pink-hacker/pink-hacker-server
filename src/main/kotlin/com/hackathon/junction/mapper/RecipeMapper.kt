@@ -19,6 +19,7 @@ interface RecipeMapper {
     @Mappings(
         Mapping(source = "updateRecipeRequest.imgUrl", target = "imgUrl"),
         Mapping(source = "updateRecipeRequest.description", target = "description"),
+        Mapping(source = "updateRecipeRequest.status", target = "status"),
     )
     fun toRecipeEntity(recipe: Recipe, updateRecipeRequest: UpdateRecipeRequest): Recipe
 }
