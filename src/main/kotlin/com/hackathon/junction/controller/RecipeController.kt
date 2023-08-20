@@ -42,7 +42,7 @@ class RecipeController(
 
     @GetMapping("/recipes/feed")
     fun searchRecipeByFeed(
-        @RequestParam sort: String = "popular"
+        @RequestParam(defaultValue = "popular", required = false) sort: String
     ): List<SearchRecipeFeedResponse> {
         // TODO: 주문수 필드 추가
         return recipeService.searchRecipeByFeed(sort)
