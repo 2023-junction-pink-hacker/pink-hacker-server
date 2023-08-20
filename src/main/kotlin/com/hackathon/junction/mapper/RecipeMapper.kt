@@ -1,6 +1,7 @@
 package com.hackathon.junction.mapper
 
 import com.hackathon.junction.dto.request.UpdateRecipeRequest
+import com.hackathon.junction.dto.response.SearchRecentOrderResponse
 import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.entity.Recipe
 import org.mapstruct.Mapper
@@ -22,4 +23,6 @@ interface RecipeMapper {
         Mapping(source = "updateRecipeRequest.status", target = "status"),
     )
     fun toRecipeEntity(recipe: Recipe, updateRecipeRequest: UpdateRecipeRequest): Recipe
+
+    fun toRecentOrderResponse(recipe: Recipe): SearchRecentOrderResponse
 }

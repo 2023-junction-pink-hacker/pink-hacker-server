@@ -270,3 +270,7 @@ GET {{host}}/api/recipes/feed?sort=popular
 
 ### 피드 레시피(recipe) 조회 - 최신순
 GET {{host}}/api/recipes/feed?sort=createdDate
+
+
+### recent order
+GET {{host}}/api/recent-order

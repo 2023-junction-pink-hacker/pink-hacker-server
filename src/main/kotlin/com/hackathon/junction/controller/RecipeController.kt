@@ -2,8 +2,10 @@ package com.hackathon.junction.controller
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
 import com.hackathon.junction.dto.request.UpdateRecipeRequest
+import com.hackathon.junction.dto.response.SearchRecentOrderResponse
 import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.dto.response.SearchStepsResponse
+import com.hackathon.junction.mapper.RecipeMapper
 import com.hackathon.junction.service.RecipeService
 import com.hackathon.junction.service.StepService
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class RecipeController(
     private val stepService: StepService,
-    private val recipeService: RecipeService
+    private val recipeService: RecipeService,
+    private val recipeMapper: RecipeMapper
 ) {
 
     @GetMapping("/steps/products/{productId}")
@@ -48,10 +51,9 @@ class RecipeController(
         return recipeService.searchRecipeByFeed(sort)
     }
 
-//    @GetMapping("/recipes/{recipeId}")
-//    fun searchRecipe(
-//        @PathVariable recipeId: Long
-//    ) {
-//        return recipeService.searchRecipe(recipeId)
-//    }
+    @GetMapping("/recent-order")
+    fun recentOrder(): List<SearchRecentOrderResponse> {
+        return recipeService.recentOrder()
+            .map { recipeMapper.toRecentOrderResponse(it) }
+    }
 }

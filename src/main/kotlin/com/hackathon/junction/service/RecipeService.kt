@@ -24,6 +24,10 @@ class RecipeService(
     private val optionMapper: OptionMapper,
     private val recipeMapper: RecipeMapper
 ) {
+    fun recentOrder(): List<Recipe> {
+        return recipeRepository.findAllByStatus()
+    }
+
     fun searchRecipeByFeed(sort: String): List<SearchRecipeFeedResponse> {
         return if (sort == "popular") {
             recipeRepository.findAllByOrderByOrderCountDesc()
