@@ -1,6 +1,7 @@
 package com.hackathon.junction.controller
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
+import com.hackathon.junction.dto.request.UpdateRecipeRequest
 import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.dto.response.SearchStepsResponse
 import com.hackathon.junction.service.RecipeService
@@ -8,6 +9,7 @@ import com.hackathon.junction.service.StepService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -28,7 +30,13 @@ class RecipeController(
 
     @PostMapping("/recipes")
     fun saveRecipe(@RequestBody saveRecipeRequest: SaveRecipeRequest): String {
-        recipeService.upsertRecipe(saveRecipeRequest)
+        recipeService.saveRecipe(saveRecipeRequest)
+        return "OK"
+    }
+
+    @PutMapping("/recipes")
+    fun updateRecipe(@RequestBody updateRecipeRequest: UpdateRecipeRequest): String {
+        recipeService.updateRecipe(updateRecipeRequest)
         return "OK"
     }
 

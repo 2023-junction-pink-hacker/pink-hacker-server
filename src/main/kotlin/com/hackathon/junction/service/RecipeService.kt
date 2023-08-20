@@ -1,9 +1,9 @@
 package com.hackathon.junction.service
 
 import com.hackathon.junction.dto.request.SaveRecipeRequest
+import com.hackathon.junction.dto.request.UpdateRecipeRequest
 import com.hackathon.junction.dto.response.SearchRecipeFeedResponse
 import com.hackathon.junction.entity.Recipe
-import com.hackathon.junction.entity.RecipeStatus
 import com.hackathon.junction.entity.RecipeStep
 import com.hackathon.junction.mapper.OptionMapper
 import com.hackathon.junction.mapper.RecipeMapper
@@ -33,27 +33,25 @@ class RecipeService(
         }
     }
 
-    fun upsertRecipe(saveRecipeRequest: SaveRecipeRequest) {
+    fun updateRecipe(updateRecipeRequest: UpdateRecipeRequest) {
+        return with(updateRecipeRequest) {
+            val recipe =
+                recipeRepository.findById(this.recipeId).orElseThrow { RuntimeException("recipeId 가 유효하지 않습니다") }
+            recipeMapper.toRecipeEntity(recipe, updateRecipeRequest)
+        }.run { recipeRepository.save(this) }
+    }
+
+    fun saveRecipe(saveRecipeRequest: SaveRecipeRequest) {
         with(saveRecipeRequest) {
             // Recipe 저장 및 수정
-            val recipe = if (recipeId == null) {
-                // Recipe 주문
+            val recipe =
                 // TODO: 같은 주문 체크해서 기존 레시피 order count 증가
                 Recipe(
-                    description,
+                    name,
                     category,
                     productId
                 )
-            } else {
-                // Recipe 수정
-                val recipe =
-                    recipeRepository.findById(this.recipeId).orElseThrow { RuntimeException("recipeId 가 유효하지 않습니다") }
-                recipe.copy(
-                    description = description,
-                    status = RecipeStatus.PUBLIC,
-                    imgUrl = imgUrl
-                )
-            }
+
             recipeRepository.save(recipe)
 
             // RecipeStep 저장

@@ -7,7 +7,7 @@ data class SaveRecipeRequest(
     val recipeId: Long? = null, // id 값이 있으면 이미지 PUBLIC 지정 필요
     val productId: Long,
     val category: String,
-    val description: String,
+    val name: String,
     val steps: List<StepDto>,
     val status: RecipeStatus = RecipeStatus.PRIVATE,
     val imgUrl: String? = null, // TODO: S3 이미지 저장

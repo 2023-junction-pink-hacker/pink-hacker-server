@@ -11,7 +11,7 @@ import jakarta.persistence.Id
 @Entity
 data class Recipe(
     @Column
-    val description: String,
+    val name: String,
 
     @Column
     val category: String,
@@ -21,6 +21,9 @@ data class Recipe(
 
     @Column(name = "orderCount")
     val orderCount: Int = 0,
+
+    @Column
+    val description: String = "",
 
     @Enumerated(EnumType.STRING)
     val status: RecipeStatus = RecipeStatus.PRIVATE,

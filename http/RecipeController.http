@@ -2,7 +2,7 @@
 GET {{host}}/api/steps/products/1
 
 
-### 레시피(recipe) 생성 및 수정
+### 레시피(recipe) 생성
 POST {{host}}/api/recipes
 Content-Type: application/json
 
@@ -252,6 +252,16 @@ Content-Type: application/json
       ]
     }
   ]
+}
+
+### 레시피(recipe) 등록
+PUT {{host}}/api/recipes
+Content-Type: application/json
+
+{
+  "recipeId": 5,
+  "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1wEJXqh8ldjXNyMYOwqqk0LHzlF9KTDwX8A&usqp=CAU",
+  "description": "이 레시피는 라이언이 춘식이를 만나기 전부터 전해져 내려오던 것입니다."
 }
 
 

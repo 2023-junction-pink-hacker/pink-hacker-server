@@ -4,6 +4,7 @@ import com.hackathon.junction.entity.RecipeStatus
 
 data class SearchRecipeFeedResponse(
     val id: Long,
+    val name: String,
     val description: String,
     val category: String,
     val productId: Long,
